@@ -8,8 +8,9 @@ new Vue({
         numberTwo: Math.round(Math.random()*10),
         myScore: 100,
         monsterScore: 100,
-        hits: 'HITS',
-        monster: 'MONSTER',
+        hits: '',
+        monster: '',
+        log: []
     },
     methods: {
         changeDisplay() {
@@ -28,6 +29,10 @@ new Vue({
             this.myScore = this.myScore - this.number;
             this.monsterScore = this.monsterScore - this.numberTwo;
             this.width = this.monsterScore;
+            this.log.unshift({
+                msg : `${this.monster} ${this.hits} Player for ${this.number}`,
+                msg2: `PLAYER ${this.hits} ${this.monster} for ${this.numberTwo}`
+            })
             if(this.myScore <= 0){
                 alert('Game Over!');
                 this.myScore = 0;
@@ -47,9 +52,13 @@ new Vue({
             this.monster = 'MONSTER';
             this.displayThree = true;
             this.number = (Math.round(Math.random()*10)) + 1;
-            this.numberTwo = (Math.round(Math.random()*10)) + 2;
+            this.numberTwo = (Math.round(Math.random()*10)) + 3;
             this.myScore = this.myScore - this.number
             this.monsterScore = this.monsterScore - this.numberTwo
+            this.log.unshift({
+                msg : `${this.monster} ${this.hits} Player for ${this.number}`,
+                msg2: `PLAYER ${this.hits} ${this.monster} for ${this.numberTwo}`
+            })
             if(this.myScore <= 0){
                 alert('Game Over!');
                 this.myScore = 0;
@@ -71,6 +80,10 @@ new Vue({
             this.numberTwo = 10;
             this.myScore = this.myScore + this.numberTwo;
             this.myScore = this.myScore - this.number;
+            this.log.unshift({
+                msg : `PLAYER ${this.hits} ${this.monster} FOR ${this.numberTwo}`,
+                msg2: `MONSTER HITS PLAYER for ${this.number}`
+            })
             if(this.myScore > 100){
                 this.myScore = 100;
                 this.displayTwo = false;
@@ -93,6 +106,7 @@ new Vue({
             this.displayTwo = true;
             this.displayThree = false;
             this.display = false;
+            this.log = []
         }
     }
 });

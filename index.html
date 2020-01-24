@@ -48,9 +48,11 @@
     <section class="row log" v-if='displayThree'>
         <div class="small-12 columns">
             <ul>
-                <li>
-                    <p class="monster-turn">MONSTER HITS PLAYER FOR {{ number }}</p>
-                    <p class="player-turn">PLAYER {{ hits }} {{ monster }} FOR {{ numberTwo }}</p>
+                <li v-for='output in log'>
+                    <p class="player-turn">{{ output.msg }}</p>
+                    <p class="monster-turn">{{ output.msg2 }}</p>
+                    <!-- <p class="monster-turn">MONSTER HITS PLAYER FOR {{ number }}</p>
+                    <p class="player-turn">PLAYER {{ hits }} {{ monster }} FOR {{ numberTwo }}</p> -->
                 </li>
             </ul>
         </div>
